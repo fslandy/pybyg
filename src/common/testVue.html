@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+</head>
+
+<body>
+  <div id='app' style="height: 100vh;width:100vh">
+    <div class="echart" id="echartDemo" style="height: 100%;width:100%"></div>
+  </div>
+</body>
+
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      message: 'afasdf',
+      option: {
+        backgroundColor: '#000',
+        globe: {
+          baseTexture: 'https://echarts.apache.org/examples' + '/data-gl/asset/world.topo.bathy.200401.jpg',
+          heightTexture: 'https://echarts.apache.org/examples' + '/data-gl/asset/bathymetry_bw_composite_4k.jpg',
+          displacementScale: 0.2,
+          shading: 'realistic',
+          environment: 'https://echarts.apache.org/examples' + '/data-gl/asset/starfield.jpg',
+          realisticMaterial: {
+            roughness: 'https://echarts.apache.org/examples' + '/asset/get/s/data-1497599804873-H1SHkG-mZ.jpg',
+            metalness: 'https://echarts.apache.org/examples' + '/asset/get/s/data-1497599800643-BJbHyGWQW.jpg',
+            textureTiling: [8, 4]
+          },
+          postEffect: {
+            enable: true
+          },
+          viewControl: {
+            autoRotate: false
+          },
+          light: {
+            main: {
+              intensity: 2,
+              shadow: true
+            },
+            ambientCubemap: {
+              texture: 'https://echarts.apache.org/examples' + '/data-gl/asset/pisa.hdr',
+              exposure: 2,
+              diffuseIntensity: 2,
+              specularIntensity: 2
+            }
+          }
+        }
+      }
+    },
+    mounted () {
+      var echartDemo = echarts.init(document.getElementById('echartDemo'));
+      console.log(echartDemo);
+      echartDemo.setOption(this.option)
+    },
+    methods: {
+
+    }
+  })
+</script>
+
+</html>
